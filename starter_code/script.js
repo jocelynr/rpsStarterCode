@@ -21,7 +21,7 @@ var pickWinner = function (userChoice, computerChoice) {
     // userChoice and computerChoice under any possible game outcome.
     var winner;
      if (userChoice === computerChoice) {
-         winner = "No winner"
+         winner = "Draw"
      } else if (userChoice === "rock" && computerChoice === "paper") {
          winner = "Computer";
      } else if (userChoice === "rock" && computerChoice === "scissors") {
@@ -42,9 +42,9 @@ var pickWinner = function (userChoice, computerChoice) {
     // either "user wins", "computer wins" or "draw"
     
     // Task 4: Show `computerChoice` in HTML after the words "Computer's choice:"
-    $("#computer-choice").append(computerChoice);
+    $("#computer-choice").html(computerChoice);
     // Task 5: Show the winner in HTML after the word "Winner:"
-    $("#winner").append(winner);
+    $("#winner").html(winner);
 };
 
 /* DOCUMENT READY: Everything inside this function will happen after
@@ -57,14 +57,26 @@ $(document).ready(function() {
 
     // This line sets `userChoice` variable to 'rock'. This value can be changed
     // manually when testing in the console.
-    var userChoice = "rock";
     // Task 3: To be completed AFTER this game functions in the console.
     // Set `userChoice` to "null" and create click handlers that changes the
+    var userChoice = null;
+    $("#rock").click(function() {
+        userChoice = "rock";
+        pickWinner(userChoice, computerChoice);
+    })
+     $("#paper").click(function() {
+        userChoice = "paper";
+        pickWinner(userChoice, computerChoice);
+    })
+     $("#scissors").click(function() {
+        userChoice = "scissors";
+        pickWinner(userChoice, computerChoice);
+    })
     // value of userChoice based on the item the user clicks on the HTML page.
 
     // This line calls the `pickWinner` function with the `userChoice` variable
     // and the `computerChoice` variable.
-    pickWinner(userChoice, computerChoice);
+    //pickWinner(userChoice, computerChoice);
     //Final Task: comment out the pickWinner function on the line above and place it within your click functions created in Task 3.
     //this is done so the computer does not pick its throw until the user has also done so.
     
